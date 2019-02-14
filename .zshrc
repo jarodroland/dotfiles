@@ -105,8 +105,11 @@ bindkey -v
 export KEYTIMEOUT=1     # set lag time to 1ms
 set -o vi
 
-# added by Anaconda3 5.2.0 installer
-export PATH="/anaconda3/bin:$PATH"
+if [[ -d /anaconda3/bin ]]; then
+    export PATH="/anaconda3/bin:$PATH"
+elif [[ -d /Users/Jarod/anaconda3/bin ]]; then
+    export PATH="/Users/Jarod/anaconda3/bin:$PATH"
+fi
 
 # FSL setup
 export FSLDIR=/usr/local/fsl
