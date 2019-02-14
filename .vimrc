@@ -1,0 +1,58 @@
+set guifont=Deja\ Vu\ Sans\ Mono\ 9
+
+syntax on           " syntax coloring by default
+
+set background=dark
+"let base16colorspace=256
+"colorscheme base16-railscasts
+colorscheme vimbrant
+highlight ColorColumn ctermbg=7
+highlight ColorColumn guibg=Gray
+
+filetype plugin indent on  " activates indenting and plugins for specific files
+
+let mapleader = "\<Space>"     " set leader to spacebar
+nnoremap <silent> <Leader>r :call Cycle_numbering()<CR>   " cycle relative numbering
+
+set softtabstop=4   " width of a tab
+set tabstop=4
+set shiftwidth=4    " width of the indentation
+set autoindent      " continue indentation level to new line
+set expandtab
+set showmatch       " paren match highlighting
+set hlsearch        " highlight what you search for
+set incsearch       " type-ahead-find
+set wildmenu        " command-line completion shows a list of matches
+set wildmode=longest,list:longest,full " Bash-vim completion behavior
+set autochdir       " use current working directory of a file as base path
+set mouse=a         " allow mouse to move cursor
+set nu              " show line numbers
+set showmode        " show the current mode on the last line
+set showcmd         " show informations about selection while in visual mode
+
+set cursorline      " highlight current line
+set scrolloff=5     " always keep lines around the cursor
+
+" use ctrl-space as escape
+:nnoremap <C-@> i
+:inoremap <C-@> <Esc>
+
+let g:airline_powerline_fonts = 1
+let g:airline_theme='minimalist'
+
+
+" Cycle through relativenumber + number, number (only), and no numbering.
+" source https://github.com/arithran/dotfiles/blob/master/.vim/autoload/arithran/mappings.vim
+function! Cycle_numbering() 
+	if exists('+relativenumber')
+		execute {
+			\ '00': 'set relativenumber   | set number',
+			\ '01': 'set norelativenumber | set number',
+			\ '10': 'set norelativenumber | set nonumber',
+			\ '11': 'set norelativenumber | set number' }[&number . &relativenumber]
+	else
+		" No relative numbering, just toggle numbers on and off.
+		set number!<CR>
+	endif
+endfunction
+
