@@ -108,7 +108,7 @@ set -o vi
 if [[ -d /anaconda3/bin ]]; then
     export PATH="/anaconda3/bin:$PATH"
 elif [[ -d /Users/Jarod/anaconda3/bin ]]; then
-    export PATH="/Users/Jarod/anaconda3/bin:$PATH"
+    export PATH="/Users/Jarod/anaconda3/bin:$PATH"  # path for fellow computer anaconda install directory
 fi
 
 # FSL setup
