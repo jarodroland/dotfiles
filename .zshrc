@@ -105,10 +105,10 @@ bindkey -v
 export KEYTIMEOUT=1     # set lag time to 1ms
 set -o vi
 
-if [[ -d /anaconda3/bin ]]; then
+if [[ -d $/anaconda3/bin ]]; then
     export PATH="/anaconda3/bin:$PATH"
-elif [[ -d /Users/Jarod/anaconda3/bin ]]; then
-    export PATH="/Users/Jarod/anaconda3/bin:$PATH"  # path for fellow computer anaconda install directory
+elif [[ -d $HOME/anaconda3/bin ]]; then
+    export PATH="$HOME/anaconda3/bin:$PATH"
 fi
 
 # FSL setup
