@@ -112,13 +112,17 @@ elif [[ -d $HOME/anaconda3/bin ]]; then
 fi
 
 # FSL setup
-export FSLDIR=/usr/local/fsl
-source $FSLDIR/etc/fslconf/fsl.sh
-export PATH=$PATH:$FSLDIR/bin
+if [[ -e /usr/local/fsl ]]; then
+    export FSLDIR=/usr/local/fsl
+    source $FSLDIR/etc/fslconf/fsl.sh
+    export PATH=$PATH:$FSLDIR/bin
+fi
 
 # Freesurfer setup
-export FREESURFER_HOME=/Applications/freesurfer
-source $FREESURFER_HOME/SetUpFreeSurfer.sh $> /dev/null
+if [[ -d /Applications/freesurfer ]]; then
+    export FREESURFER_HOME=/Applications/freesurfer
+    source $FREESURFER_HOME/SetUpFreeSurfer.sh $> /dev/null
+fi
 
 # active the advanced move commands zmv and mmv
 autoload -U zmv
