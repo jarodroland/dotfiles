@@ -106,9 +106,9 @@ export KEYTIMEOUT=1     # set lag time to 1ms
 set -o vi
 
 if [[ -d /anaconda3/bin ]]; then
-    export PATH="/anaconda3/bin:$PATH"
+# export PATH="/anaconda3/bin:$PATH"  # commented out by conda initialize
 elif [[ -d /Users/Jarod/anaconda3/bin ]]; then
-    export PATH="/Users/Jarod/anaconda3/bin:$PATH"  # path for fellow computer anaconda install directory
+# export PATH="/Users/Jarod/anaconda3/bin:$PATH"  # commented out by conda initialize  # path for fellow computer anaconda install directory
 fi
 
 # FSL setup
@@ -117,9 +117,29 @@ source $FSLDIR/etc/fslconf/fsl.sh
 export PATH=$PATH:$FSLDIR/bin
 
 # Freesurfer setup
-export FREESURFER_HOME=/Applications/freesurfer
+if [[ -d /Applications/freesurfer ]]; then      # osx path
+    export FREESURFER_HOME=/Applications/freesurfer
+elif [[ -d /usr/local/freesurfer ]]; then       # linux path
+    export FREESURFER_HOME=/user/local/freesurfer
+fi
 source $FREESURFER_HOME/SetUpFreeSurfer.sh $> /dev/null
 
 # active the advanced move commands zmv and mmv
 autoload -U zmv
 alias mmv='noglob zmv -W'
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('~/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "~/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "~/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="~/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
