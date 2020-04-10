@@ -112,9 +112,11 @@ elif [[ -d /Users/Jarod/anaconda3/bin ]]; then
 fi
 
 # FSL setup
-export FSLDIR=/usr/local/fsl
-source $FSLDIR/etc/fslconf/fsl.sh
-export PATH=$PATH:$FSLDIR/bin
+if [[ -e /usr/local/fsl ]]; then
+    export FSLDIR=/usr/local/fsl
+    source $FSLDIR/etc/fslconf/fsl.sh
+    export PATH=$PATH:$FSLDIR/bin
+fi
 
 # Freesurfer setup
 if [[ -d /Applications/freesurfer ]]; then      # osx path
