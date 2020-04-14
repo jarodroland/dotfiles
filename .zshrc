@@ -122,7 +122,7 @@ fi
 if [[ -d /Applications/freesurfer ]]; then      # osx path
     export FREESURFER_HOME=/Applications/freesurfer
 elif [[ -d /usr/local/freesurfer ]]; then       # linux path
-    export FREESURFER_HOME=/user/local/freesurfer
+    export FREESURFER_HOME=/usr/local/freesurfer
 fi
 source $FREESURFER_HOME/SetUpFreeSurfer.sh $> /dev/null
 
