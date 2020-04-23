@@ -1,4 +1,5 @@
-set guifont=Deja\ Vu\ Sans\ Mono\ 9
+"set guifont=Deja\ Vu\ Sans\ Mono\ 9
+set guifont=Hack
 
 syntax on           " syntax coloring by default
 
@@ -33,7 +34,7 @@ set showcmd         " show informations about selection while in visual mode
 set cursorline      " highlight current line
 set scrolloff=5     " always keep lines around the cursor
 
-" use ctrl-space as escape
+" use ctrl-space as to toggle insert mode / Escape
 :nnoremap <C-@> i
 :inoremap <C-@> <Esc>
 
