@@ -31,7 +31,7 @@ set nu              " show line numbers
 set showmode        " show the current mode on the last line
 set showcmd         " show informations about selection while in visual mode
 
-set cursorline      " highlight current line
+"set cursorline      " highlight current line
 set scrolloff=5     " always keep lines around the cursor
 
 " use ctrl-space as to toggle insert mode / Escape
