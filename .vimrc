@@ -1,5 +1,5 @@
 "set guifont=Deja\ Vu\ Sans\ Mono\ 9
-set guifont=Hack
+set guifont=Hack\ Nerd\ Font
 
 syntax on           " syntax coloring by default
 
