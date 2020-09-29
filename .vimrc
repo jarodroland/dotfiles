@@ -7,8 +7,10 @@ set background=dark
 "let base16colorspace=256
 "colorscheme base16-railscasts
 colorscheme vimbrant
-highlight ColorColumn ctermbg=7
-highlight ColorColumn guibg=Gray
+" override some vimbrant color options
+highlight CursorLine  guibg=#111111 guifg=NONE "for MacVim (gui) set highlight to very dark grey and don't change foreground color
+highlight ColorColumn guibg=#111111 guifg=NONE  
+highlight Comment guifg=#888888 "gui needs a little lighter comment color (terminal is darker due to transparent background)
 
 filetype plugin indent on  " activates indenting and plugins for specific files
 
