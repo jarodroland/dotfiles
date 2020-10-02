@@ -119,13 +119,14 @@ if [[ -e /usr/local/fsl ]]; then
 fi
 
 # Freesurfer setup
-if [[ -d /Applications/freesurfer ]]; then      # osx path
+if [[ -d /Applications/freesurfer ]]; then          # osx path
     export FREESURFER_HOME=/Applications/freesurfer
-    source $FREESURFER_HOME/SetUpFreeSurfer.sh $> /dev/null
-elif [[ -d /usr/local/freesurfer ]]; then       # linux path
+elif [[ -d /Applications/freesurfer/7.1.1 ]]; then  # osx FreeSurfer 7.1.1 path
+    export FREESURFER_HOME=/Applications/freesurfer/7.1.1
+elif [[ -d /usr/local/freesurfer ]]; then           # linux path
     export FREESURFER_HOME=/usr/local/freesurfer
-    source $FREESURFER_HOME/SetUpFreeSurfer.sh $> /dev/null
 fi
+source $FREESURFER_HOME/SetUpFreeSurfer.sh $> /dev/null
 
 # active the advanced move commands zmv and mmv
 autoload -U zmv
