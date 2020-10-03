@@ -119,10 +119,10 @@ if [[ -e /usr/local/fsl ]]; then
 fi
 
 # Freesurfer setup
-if [[ -d /Applications/freesurfer ]]; then          # osx path
-    export FREESURFER_HOME=/Applications/freesurfer
-elif [[ -d /Applications/freesurfer/7.1.1 ]]; then  # osx FreeSurfer 7.1.1 path
+if [[ -d /Applications/freesurfer/7.1.1 ]]; then    # osx FreeSurfer 7.1.1 path
     export FREESURFER_HOME=/Applications/freesurfer/7.1.1
+elif [[ -d /Applications/freesurfer ]]; then        # old osx path
+    export FREESURFER_HOME=/Applications/freesurfer
 elif [[ -d /usr/local/freesurfer ]]; then           # linux path
     export FREESURFER_HOME=/usr/local/freesurfer
 fi
