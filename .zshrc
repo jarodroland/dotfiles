@@ -128,6 +128,12 @@ elif [[ -d /usr/local/freesurfer ]]; then           # linux path
 fi
 source $FREESURFER_HOME/SetUpFreeSurfer.sh $> /dev/null
 
+# add Matlab to path in OSX
+export matlabPath=`ls -d /Applications/MATLAB_R?????.app/bin/`
+if [[ -d $matlabPath ]]; then
+    export PATH=$matlabPath:$PATH
+fi
+
 # active the advanced move commands zmv and mmv
 autoload -U zmv
 alias mmv='noglob zmv -W'
