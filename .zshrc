@@ -129,7 +129,7 @@ fi
 source $FREESURFER_HOME/SetUpFreeSurfer.sh $> /dev/null
 
 # add Matlab to path in OSX
-export temp=`find /Applications -maxdepth 1 -name 'MATLAB_*' -exec echo "{}/bin/:" \;`$PATH # if a Matlab directory exists in an /Applications directory then add the /bin sub-directory to the PATH
+export PATH=`find /Applications -maxdepth 1 -name 'MATLAB_*' -exec echo "{}/bin/:" \;`$PATH # if a Matlab directory exists in an /Applications directory then add the /bin sub-directory to the PATH
 
 # active the advanced move commands zmv and mmv
 autoload -U zmv
