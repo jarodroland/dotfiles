@@ -96,8 +96,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-alias mv="mv -i"
-alias cp="cp -i"
+alias mv="mv -i"    # prompt before overwriting a file
+alias cp="cp -i"    # prompt before overwriting a file
+
+set -o noclobber    # avoid overwriting files on output redirect
 
 DEFAULT_USER="jarod"
 
