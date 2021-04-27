@@ -1,0 +1,21 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Jarod Roland
+	email = jarod.roland@gmail.com
+[core]
+	whitespace = cr-at-eol
+	autocrlf = false
+	excludesfile = ~/.gitignore
+[color]
+	ui = true
+[status]
+	submoduleSummary = true
+[diff]
+    submodule = log
+[commit]
+    verbose = true
+[push]
+    default = current
+[diff]
+    algorithm = histogram # myers (default), minimal, patience, histogram
+    colorMoved = dimmed_zebra
