@@ -96,7 +96,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-
+alias mv="mv -i"
+alias cp="cp -i"
 
 DEFAULT_USER="jarod"
 
@@ -131,7 +132,7 @@ source $FREESURFER_HOME/SetUpFreeSurfer.sh $> /dev/null
 # add Matlab to path in OSX
 [ `uname` = "Darwin" ] && export PATH=`ls -d /Applications/MATLAB_R*.app/bin/`:$PATH 
 
-# active the advanced move commands zmv and mmv
+# activate the advanced move commands zmv and mmv
 autoload -U zmv
 alias mmv='noglob zmv -W'
 
