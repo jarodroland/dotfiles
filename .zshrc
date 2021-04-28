@@ -134,6 +134,12 @@ source $FREESURFER_HOME/SetUpFreeSurfer.sh $> /dev/null
 # add Matlab to path in OSX
 [ `uname` = "Darwin" ] && export PATH=`ls -d /Applications/MATLAB_R*.app/bin/`:$PATH 
 
+# add ANTs bin to path
+if [ -d /opt/ANTs/bin ]; then
+    export ANTSPATH=/opt/ANTs/bin/
+    export PATH=${ANTSPATH}:$PATH
+fi
+
 # activate the advanced move commands zmv and mmv
 autoload -U zmv
 alias mmv='noglob zmv -W'
