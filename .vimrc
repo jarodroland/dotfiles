@@ -17,6 +17,7 @@ filetype plugin indent on  " activates indenting and plugins for specific files
 let mapleader = "\<Space>"     " set leader to spacebar
 nnoremap <silent> <Leader>r :call Cycle_numbering()<CR>   " cycle relative numbering
 
+set listchars=tab:→\ ,trail:·,eol:¬,extends:…,precedes:…	" when 'set list' will identify whitespace chraracters such as tab
 set softtabstop=0	" see https://vi.stackexchange.com/questions/4244/what-is-softtabstop-used-for
 set tabstop=4		" width of a tab
 set shiftwidth=4    " width of the indentation
