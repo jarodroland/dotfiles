@@ -17,11 +17,11 @@ filetype plugin indent on  " activates indenting and plugins for specific files
 let mapleader = "\<Space>"     " set leader to spacebar
 nnoremap <silent> <Leader>r :call Cycle_numbering()<CR>   " cycle relative numbering
 
-set softtabstop=4   " width of a tab
-set tabstop=4
+set softtabstop=0	" see https://vi.stackexchange.com/questions/4244/what-is-softtabstop-used-for
+set tabstop=4		" width of a tab
 set shiftwidth=4    " width of the indentation
 set autoindent      " continue indentation level to new line
-set expandtab
+"set expandtab       " has the effect of replacing tabs with spaces, not good for tsv files
 set showmatch       " paren match highlighting
 set hlsearch        " highlight what you search for
 set incsearch       " type-ahead-find
