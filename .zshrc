@@ -62,7 +62,7 @@ ZSH_THEME="robbyrussell" #"powerlevel9k/powerlevel9k" #"robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git vi-mode zsh-autosuggestions zsh-syntax-highlighting pip 
+  git vi-mode zsh-autosuggestions zsh-syntax-highlighting pip history-substring-search
 )
 
 source $ZSH/oh-my-zsh.sh
