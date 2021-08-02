@@ -3,6 +3,7 @@
 	name = Jarod Roland
 	email = jarod.roland@gmail.com
 [core]
+    editor = vim
 	whitespace = cr-at-eol
 	autocrlf = false
     excludesfile = ~/.gitignore
