@@ -62,7 +62,7 @@ ZSH_THEME="robbyrussell" #"powerlevel9k/powerlevel9k" #"robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git vi-mode zsh-autosuggestions zsh-syntax-highlighting pip 
+  git vi-mode zsh-autosuggestions zsh-syntax-highlighting pip history-substring-search
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -107,12 +107,6 @@ DEFAULT_USER="jarod"
 bindkey -v
 export KEYTIMEOUT=1     # set lag time to 1ms
 set -o vi
-
-if [[ -d /anaconda3/bin ]]; then
-# export PATH="/anaconda3/bin:$PATH"  # commented out by conda initialize
-elif [[ -d /Users/Jarod/anaconda3/bin ]]; then
-# export PATH="/Users/Jarod/anaconda3/bin:$PATH"  # commented out by conda initialize  # path for fellow computer anaconda install directory
-fi
 
 # FSL setup
 if [[ -e /usr/local/fsl ]]; then
