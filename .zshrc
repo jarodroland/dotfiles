@@ -123,7 +123,10 @@ elif [[ -d /Applications/freesurfer ]]; then        # old osx path
 elif [[ -d /usr/local/freesurfer ]]; then           # linux path
     export FREESURFER_HOME=/usr/local/freesurfer
 fi
-source $FREESURFER_HOME/SetUpFreeSurfer.sh $> /dev/null
+
+if (( ${FREESURFER_HOME} )); then
+	source $FREESURFER_HOME/SetUpFreeSurfer.sh $> /dev/null
+fi
 
 # add Matlab to path in OSX
 [ `uname` = "Darwin" ] && export PATH=`ls -d /Applications/MATLAB_R*.app/bin/`:$PATH 
