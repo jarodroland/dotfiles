@@ -14,9 +14,6 @@ highlight Comment guifg=#888888 "gui needs a little lighter comment color (termi
 
 filetype plugin indent on  " activates indenting and plugins for specific files
 
-let mapleader = "\<Space>"     " set leader to spacebar
-nnoremap <silent> <Leader>r :call Cycle_numbering()<CR>   " cycle relative numbering
-
 set listchars=tab:→…,trail:◥,eol:¬,extends:❯,precedes:❮	" when 'set list' will identify whitespace chraracters such as tab
 highlight NonText ctermfg=gray guifg=gray
 highlight SpecialKey ctermfg=red guifg=red
@@ -46,6 +43,9 @@ set scrolloff=5     " always keep lines around the cursor
 let g:airline_powerline_fonts = 1
 let g:airline_theme='minimalist'
 
+let mapleader = "\<Space>"     " set leader to spacebar
+"nnoremap <silent> <Leader>r :call Cycle_numbering()<CR>   " cycle relative numbering
+nmap <silent> <Leader>r :call Cycle_numbering()<CR>   " cycle relative numbering
 
 " Cycle through relativenumber + number, number (only), and no numbering.
 " source https://github.com/arithran/dotfiles/blob/master/.vim/autoload/arithran/mappings.vim
@@ -58,7 +58,7 @@ function! Cycle_numbering()
 			\ '11': 'set norelativenumber | set number' }[&number . &relativenumber]
 	else
 		" No relative numbering, just toggle numbers on and off.
-		set number!<CR>
+		set number!
 	endif
 endfunction
 
