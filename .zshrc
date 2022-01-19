@@ -124,7 +124,7 @@ elif [[ -d /usr/local/freesurfer ]]; then           # linux path
     export FREESURFER_HOME=/usr/local/freesurfer
 fi
 
-if (( ${FREESURFER_HOME} )); then
+if (( ${+FREESURFER_HOME} )); then
 	source $FREESURFER_HOME/SetUpFreeSurfer.sh $> /dev/null
 fi
 
