@@ -129,7 +129,7 @@ if (( ${+FREESURFER_HOME} )); then
 fi
 
 # add Matlab to path in OSX
-[ `uname` = "Darwin" ] && export PATH=`ls -d /Applications/MATLAB_R*.app/bin/`:$PATH 
+[[ -d /Applications/MATLAB_R*.app/ ]] && export PATH=`ls -d /Applications/MATLAB_R*.app/bin/`:$PATH 
 
 # add ANTs bin to path
 if [ -d /opt/ANTs/bin ]; then
