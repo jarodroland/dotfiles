@@ -101,7 +101,7 @@ alias cp="cp -i"    # prompt before overwriting a file
 
 set -o noclobber    # avoid overwriting files on output redirect
 
-DEFAULT_USER="jarod"
+#DEFAULT_USER="jarod"
 
 # vi edit mode
 bindkey -v
@@ -118,8 +118,8 @@ fi
 # Freesurfer setup
 if [[ -d /Applications/freesurfer/7.1.1 ]]; then    # osx FreeSurfer 7.1.1 path
     export FREESURFER_HOME=/Applications/freesurfer/7.1.1
-elif [[ -d /Applications/freesurfer ]]; then        # old osx path
-    export FREESURFER_HOME=/Applications/freesurfer
+elif [[ -d /Applications/freesurfer/7.2.0 ]]; then  # osx FreeSurfer 7.2.0 path
+    export FREESURFER_HOME=/Applications/freesurfer/7.2.0
 elif [[ -d /usr/local/freesurfer ]]; then           # linux path
     export FREESURFER_HOME=/usr/local/freesurfer
 fi
@@ -147,6 +147,8 @@ if [[ -d ~/anaconda3 ]]; then
     export ANACONDA_DIRECTORY=~/anaconda3
 elif [[ -d ~/opt/anaconda3 ]]; then
     export ANACONDA_DIRECTORY=~/opt/anaconda3
+elif [[ -d /opt/anaconda3 ]]; then
+    export ANACONDA_DIRECTORY=/opt/anaconda3
 fi
 
 __conda_setup="$('$ANACONDA_DIRECTORY/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
