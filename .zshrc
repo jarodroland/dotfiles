@@ -131,6 +131,9 @@ fi
 # add Matlab to path in OSX
 [[ -d /Applications/MATLAB_R*.app/ ]] && export PATH=`ls -d /Applications/MATLAB_R*.app/bin/`:$PATH 
 
+# add Workbench to path in OSX
+[[ -d /Applications/workbench/ ]] && export PATH=$PATH:/Applications/workbench/bin_macosx64
+
 # add ANTs bin to path
 if [ -d /opt/ANTs/bin ]; then
     export ANTSPATH=/opt/ANTs/bin/
