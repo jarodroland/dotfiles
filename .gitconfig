@@ -26,3 +26,5 @@
 [diff]
     algorithm = histogram       # myers (default), minimal, patience, histogram
     colorMoved = dimmed_zebra   # zebra (default), no, plain, dimmed_zebra 
+[pull]
+	rebase = false
