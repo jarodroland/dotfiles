@@ -18,7 +18,15 @@
 [status]
 	submoduleSummary = true
 [diff]
-    submodule = log
+	submodule = log
+	tool = vimdiff
+	guitool = gvimdiff
+[difftool]
+	prompt = false
+[mergetool]
+	tool = vimdiff
+	guitool = gvimdiff
+	conflictstyle = diff3
 [commit]
     verbose = true
 [push]
@@ -28,3 +36,5 @@
     colorMoved = dimmed_zebra   # zebra (default), no, plain, dimmed_zebra 
 [pull]
 	rebase = false
+[init]
+	defaultBranch = main
