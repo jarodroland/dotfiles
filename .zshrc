@@ -117,11 +117,11 @@ fi
 
 # Freesurfer setup
 if [[ -d /Applications/freesurfer/7.1.1 ]]; then    # osx FreeSurfer 7.1.1 path
-    export FREESURFER_HOME=/Applications/freesurfer/7.1.1
+    export FREESURFER_HOME=/Applications/freesurfer/7.1.1/
 elif [[ -d /Applications/freesurfer/7.2.0 ]]; then  # osx FreeSurfer 7.2.0 path
-    export FREESURFER_HOME=/Applications/freesurfer/7.2.0
+    export FREESURFER_HOME=/Applications/freesurfer/7.2.0/
 elif [[ -d /usr/local/freesurfer ]]; then           # linux path
-    export FREESURFER_HOME=/usr/local/freesurfer
+    export FREESURFER_HOME=/usr/local/freesurfer/
 fi
 
 if (( ${+FREESURFER_HOME} )); then
@@ -129,7 +129,7 @@ if (( ${+FREESURFER_HOME} )); then
 fi
 
 # add Matlab to path in OSX
-[[ -d /Applications/MATLAB_R*.app/ ]] && export PATH=`ls -d /Applications/MATLAB_R*.app/bin/`:$PATH 
+[ -d /Applications/MATLAB_R*.app/ ] && export PATH=`ls -d /Applications/MATLAB_R*.app/bin/`:$PATH 
 
 # add Workbench to path in OSX
 [[ -d /Applications/workbench/ ]] && export PATH=$PATH:/Applications/workbench/bin_macosx64
