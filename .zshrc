@@ -154,6 +154,8 @@ elif [[ -d ~/opt/anaconda3 ]]; then
     export ANACONDA_DIRECTORY=~/opt/anaconda3
 elif [[ -d /opt/anaconda3 ]]; then
     export ANACONDA_DIRECTORY=/opt/anaconda3
+elif [[ -d ~/mambaforge ]]; then
+    export ANACONDA_DIRECTORY=~/mambaforge
 fi
 
 __conda_setup="$('$ANACONDA_DIRECTORY/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
