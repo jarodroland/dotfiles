@@ -120,6 +120,8 @@ if [[ -d /Applications/freesurfer/7.1.1 ]]; then    # osx FreeSurfer 7.1.1 path
     export FREESURFER_HOME=/Applications/freesurfer/7.1.1/
 elif [[ -d /Applications/freesurfer/7.2.0 ]]; then  # osx FreeSurfer 7.2.0 path
     export FREESURFER_HOME=/Applications/freesurfer/7.2.0/
+elif [[ -d /usr/local/freesurfer/7.3.2/ ]]; then           # linux path
+    export FREESURFER_HOME=/usr/local/freesurfer/7.3.2/
 elif [[ -d /usr/local/freesurfer ]]; then           # linux path
     export FREESURFER_HOME=/usr/local/freesurfer/
 fi
