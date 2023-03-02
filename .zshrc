@@ -129,7 +129,7 @@ if (( ${+FREESURFER_HOME} )); then
 fi
 
 # add Matlab to path in OSX
-[ -d /Applications/MATLAB_R*.app/ ] && export PATH=`ls -d /Applications/MATLAB_R*.app/bin/`:$PATH 
+[[ -d /Applications/MATLAB_R*.app/ ]] && export PATH=`ls -d /Applications/MATLAB_R*.app/bin/`:$PATH 
 
 # add Workbench to path in OSX
 [[ -d /Applications/workbench/ ]] && export PATH=$PATH:/Applications/workbench/bin_macosx64
