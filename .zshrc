@@ -133,8 +133,10 @@ fi
 # add Matlab to path in OSX
 [[ -d /Applications/MATLAB_R*.app/ ]] && export PATH=`ls -d /Applications/MATLAB_R*.app/bin/`:$PATH 
 
-# add Workbench to path in OSX
+# add workbench to path in OSX
 [[ -d /Applications/workbench/ ]] && export PATH=$PATH:/Applications/workbench/bin_macosx64
+# add workbench to path in linux
+[[ -d /opt/workbench/bin_linux64 ]] $$ export PATH=$PATH:/opt/workbench/bin_linux64
 
 # add ANTs bin to path
 if [ -d /opt/ANTs/bin ]; then
@@ -173,4 +175,5 @@ unset __conda_setup
 
 # iTerm2 shell integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
 
