@@ -16,6 +16,8 @@
 # If you're using Neovim, remove the :xrestore line
 
 NEW_DISPLAY=$(tmux show-env | sed -n 's/^DISPLAY=//p')
+[[ -z "$NEW_DISPLAY" ]] && exit
+
 tmux list-panes -s -F "#{session_name}:#{window_index}.#{pane_index} #{pane_current_command}" | \
 while read pane_process
 do
