@@ -44,8 +44,10 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='minimalist'
 
 let mapleader = "\<Space>"     " set leader to spacebar
+
 "nnoremap <silent> <Leader>r :call Cycle_numbering()<CR>   " cycle relative numbering
-nmap <silent> <Leader>r :call Cycle_numbering()<CR>   " cycle relative numbering
+nmap <silent> <Leader>r :call Cycle_numbering()<CR>   		" cycle relative numbering
+nmap <silent> ./ :nohlsearch<CR>							" clear the search highlighting
 
 " Cycle through relativenumber + number, number (only), and no numbering.
 " source https://github.com/arithran/dotfiles/blob/master/.vim/autoload/arithran/mappings.vim
