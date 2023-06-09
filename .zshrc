@@ -127,6 +127,11 @@ set -o vi
 # activate the advanced move commands zmv and mmv
 autoload -U zmv
 alias mmv='noglob zmv -W'
+alias zmv='noglob zmv'
+alias zcp='noglob zmv -C'
+alias zln='noglob zmv -L'
+alias zsy='noglob zmv -Ls'
+
 
 # FSL setup
 if [[ -e /usr/local/fsl ]]; then
