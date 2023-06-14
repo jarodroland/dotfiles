@@ -147,6 +147,8 @@ elif [[ -d /Applications/freesurfer/7.2.0/ ]]; then  			# osx FreeSurfer 7.2.0 p
     export FREESURFER_HOME=/Applications/freesurfer/7.2.0/
 elif [[ -d /Applications/freesurfer/7.1.1/ ]]; then    			# osx FreeSurfer 7.1.1 path
     export FREESURFER_HOME=/Applications/freesurfer/7.1.1/
+elif [[ -d /usr/local/freesurfer/7.4.0/ ]]; then				# linux Freesurfer 7.4.0 path
+    export FREESURFER_HOME=/usr/local/freesurfer/7.4.0/
 elif [[ -d /usr/local/freesurfer/7.3.2/ ]]; then				# linux Freesurfer 7.3.2 path
     export FREESURFER_HOME=/usr/local/freesurfer/7.3.2/
 elif [[ -f /usr/local/freesurfer/SetUpFreeSurfer.sh ]]; then	# linux path
