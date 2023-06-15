@@ -114,6 +114,7 @@ source $ZSH/oh-my-zsh.sh
 #
 alias mv="mv -i"    # prompt before overwriting a file
 alias cp="cp -i"    # prompt before overwriting a file
+alias copy="tr -d '\n' | pbcopy"	# copy without the trailing newline (e.g. pwd | copy)
 
 set -o noclobber    # avoid overwriting files on output redirect
 
