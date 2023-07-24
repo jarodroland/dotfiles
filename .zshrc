@@ -114,6 +114,7 @@ source $ZSH/oh-my-zsh.sh
 #
 alias mv="mv -i"    # prompt before overwriting a file
 alias cp="cp -i"    # prompt before overwriting a file
+alias copy="tr -d '\n' | pbcopy"	# copy without the trailing newline (e.g. pwd | copy)
 
 set -o noclobber    # avoid overwriting files on output redirect
 
@@ -127,6 +128,11 @@ set -o vi
 # activate the advanced move commands zmv and mmv
 autoload -U zmv
 alias mmv='noglob zmv -W'
+alias zmv='noglob zmv'
+alias zcp='noglob zmv -C'
+alias zln='noglob zmv -L'
+alias zsy='noglob zmv -Ls'
+
 
 # FSL setup
 if [[ -e /usr/local/fsl ]]; then
@@ -136,10 +142,14 @@ if [[ -e /usr/local/fsl ]]; then
 fi
 
 # Freesurfer setup
-if [[ -d /Applications/freesurfer/7.2.0/ ]]; then  				# osx FreeSurfer 7.2.0 path
+if [[ -d /Applications/freesurfer/7.4.0/ ]]; then  				# osx FreeSurfer 7.4.0 path
+    export FREESURFER_HOME=/Applications/freesurfer/7.4.0/
+elif [[ -d /Applications/freesurfer/7.2.0/ ]]; then  			# osx FreeSurfer 7.2.0 path
     export FREESURFER_HOME=/Applications/freesurfer/7.2.0/
 elif [[ -d /Applications/freesurfer/7.1.1/ ]]; then    			# osx FreeSurfer 7.1.1 path
     export FREESURFER_HOME=/Applications/freesurfer/7.1.1/
+elif [[ -d /usr/local/freesurfer/7.4.0/ ]]; then				# linux Freesurfer 7.4.0 path
+    export FREESURFER_HOME=/usr/local/freesurfer/7.4.0/
 elif [[ -d /usr/local/freesurfer/7.3.2/ ]]; then				# linux Freesurfer 7.3.2 path
     export FREESURFER_HOME=/usr/local/freesurfer/7.3.2/
 elif [[ -f /usr/local/freesurfer/SetUpFreeSurfer.sh ]]; then	# linux path
