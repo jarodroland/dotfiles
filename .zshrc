@@ -173,11 +173,10 @@ elif [ $(uname) = "Linux" ]; then
 	[[ -d /opt/workbench/bin_linux64 ]] && export PATH=$PATH:/opt/workbench/bin_linux64
 
 	# add ANTs bin to path
-	if [ -d /opt/ANTs/bin ]; then
-		export ANTSPATH=/opt/ANTs/bin/
+	if [ -d /opt/ants-2.4.4/bin ]; then
+		export ANTSPATH=/opt/ants-2.4.4/bin/
 		export PATH=$PATH:${ANTSPATH}
 	fi
-
 fi
 
 # >>> conda initialize >>>
