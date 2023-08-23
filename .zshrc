@@ -115,6 +115,7 @@ source $ZSH/oh-my-zsh.sh
 alias mv="mv -i"    # prompt before overwriting a file
 alias cp="cp -i"    # prompt before overwriting a file
 alias copy="tr -d '\n' | pbcopy"	# copy without the trailing newline (e.g. pwd | copy)
+alias rsync='rsync --exclude=".DS_Store"'
 
 set -o noclobber    # avoid overwriting files on output redirect
 
@@ -163,7 +164,10 @@ fi
 # setup OSX and Linux specific paths
 if [ $(uname) = "Darwin" ]; then
 	# add Matlab to path in OSX
-	[[ -d /Applications/MATLAB_R*.app/ ]] && export PATH=`ls -d /Applications/MATLAB_R*.app/bin/`:$PATH 
+	matlabPaths=(`ls -d /Applications/MATLAB_R*.app`)			# in case there is more than one Matlab installation
+	if [[ $#matlabPaths > 0 ]]; then
+		export PATH=$PATH:$matlabPaths[-1]						# when sorted alphanumerically by default the last entry should be the most recent
+	fi
 
 	# add workbench to path in OSX
 	[[ -d /Applications/workbench/bin_macosx64 ]] && export PATH=$PATH:/Applications/workbench/bin_macosx64
