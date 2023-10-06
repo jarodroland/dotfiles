@@ -72,7 +72,8 @@ plugins=(
   git 
   zsh-vi-mode 
   zsh-autosuggestions 
-  zsh-syntax-highlighting 
+  #zsh-syntax-highlighting 
+  F-Sy-H
   pip 
   history-substring-search 
 )
