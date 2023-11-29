@@ -167,9 +167,9 @@ fi
 # setup OSX and Linux specific paths
 if [ $(uname) = "Darwin" ]; then
 	# add Matlab to path in OSX
-	matlabPaths=(`ls -d /Applications/MATLAB_R*.app`)			# in case there is more than one Matlab installation
+	matlabPaths=(`ls -d /Applications/MATLAB_R*.app/bin`)			# in case there is more than one Matlab installation
 	if [[ $#matlabPaths > 0 ]]; then
-		export PATH=$PATH:$matlabPaths[-1]						# when sorted alphanumerically by default the last entry should be the most recent
+		export PATH=$PATH:$matlabPaths[-1]							# when sorted alphanumerically by default the last entry should be the most recent
 	fi
 
 	# add workbench to path in OSX
