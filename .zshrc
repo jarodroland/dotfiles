@@ -137,37 +137,39 @@ alias zsy='noglob zmv -Ls'
 
 
 # FSL setup
-if [[ -e /usr/local/fsl ]]; then
+if [[ -z $FSL_DIR && -e /usr/local/fsl ]]; then
     export FSLDIR=/usr/local/fsl
     source $FSLDIR/etc/fslconf/fsl.sh
     export PATH=$PATH:$FSLDIR/bin
 fi
 
 # Freesurfer setup
-if [[ -d /Applications/freesurfer/7.4.0/ ]]; then  				# osx FreeSurfer 7.4.0 path
-    export FREESURFER_HOME=/Applications/freesurfer/7.4.0/
-elif [[ -d /Applications/freesurfer/7.2.0/ ]]; then  			# osx FreeSurfer 7.2.0 path
-    export FREESURFER_HOME=/Applications/freesurfer/7.2.0/
-elif [[ -d /Applications/freesurfer/7.1.1/ ]]; then    			# osx FreeSurfer 7.1.1 path
-    export FREESURFER_HOME=/Applications/freesurfer/7.1.1/
-elif [[ -d /usr/local/freesurfer/7.4.0/ ]]; then				# linux Freesurfer 7.4.0 path
-    export FREESURFER_HOME=/usr/local/freesurfer/7.4.0/
-elif [[ -d /usr/local/freesurfer/7.3.2/ ]]; then				# linux Freesurfer 7.3.2 path
-    export FREESURFER_HOME=/usr/local/freesurfer/7.3.2/
-elif [[ -f /usr/local/freesurfer/SetUpFreeSurfer.sh ]]; then	# linux path
-    export FREESURFER_HOME=/usr/local/freesurfer/
-fi
-
-if (( ${+FREESURFER_HOME} )); then
-	source $FREESURFER_HOME/SetUpFreeSurfer.sh $> /dev/null
+if [[ -z $FREESURFER_HOME ]]; then
+	if [[ -d /Applications/freesurfer/7.4.0/ ]]; then  				# osx FreeSurfer 7.4.0 path
+		export FREESURFER_HOME=/Applications/freesurfer/7.4.0/
+	elif [[ -d /Applications/freesurfer/7.2.0/ ]]; then  			# osx FreeSurfer 7.2.0 path
+		export FREESURFER_HOME=/Applications/freesurfer/7.2.0/
+	elif [[ -d /Applications/freesurfer/7.1.1/ ]]; then    			# osx FreeSurfer 7.1.1 path
+		export FREESURFER_HOME=/Applications/freesurfer/7.1.1/
+	elif [[ -d /usr/local/freesurfer/7.4.0/ ]]; then				# linux Freesurfer 7.4.0 path
+		export FREESURFER_HOME=/usr/local/freesurfer/7.4.0/
+	elif [[ -d /usr/local/freesurfer/7.3.2/ ]]; then				# linux Freesurfer 7.3.2 path
+		export FREESURFER_HOME=/usr/local/freesurfer/7.3.2/
+	elif [[ -f /usr/local/freesurfer/SetUpFreeSurfer.sh ]]; then	# linux path
+		export FREESURFER_HOME=/usr/local/freesurfer/
+	fi
+	
+	if [[ -n $FREESURFER_HOME ]]; then
+		source $FREESURFER_HOME/SetUpFreeSurfer.sh $> /dev/null
+	fi
 fi
 
 # setup OSX and Linux specific paths
 if [ $(uname) = "Darwin" ]; then
 	# add Matlab to path in OSX
-	matlabPaths=(`ls -d /Applications/MATLAB_R*.app`)			# in case there is more than one Matlab installation
+	matlabPaths=(`ls -d /Applications/MATLAB_R*.app/bin`)			# in case there is more than one Matlab installation
 	if [[ $#matlabPaths > 0 ]]; then
-		export PATH=$PATH:$matlabPaths[-1]						# when sorted alphanumerically by default the last entry should be the most recent
+		export PATH=$PATH:$matlabPaths[-1]							# when sorted alphanumerically by default the last entry should be the most recent
 	fi
 
 	# add workbench to path in OSX
