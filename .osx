@@ -10,3 +10,6 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 # export JAVA_HOME so JRE works at the command line
 export JAVA_HOME=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
 
+# disable writing .DS_Store to network mounts
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
