@@ -8,16 +8,15 @@ set background=dark
 "colorscheme base16-railscasts
 colorscheme vimbrant
 " override some vimbrant color options
-highlight CursorLine  guibg=#111111 guifg=NONE "for MacVim (gui) set highlight to very dark grey and don't change foreground color
-highlight ColorColumn guibg=#111111 guifg=NONE  
-highlight Comment ctermfg=248 	"terminal needs a little lighter comment color
-highlight Comment guifg=#888888 "gui needs a little lighter comment color (terminal is darker due to transparent background)
+highlight CursorLine  guibg=#333333 guifg=NONE "for MacVim (gui) set highlight to very dark grey and don't change foreground color
+highlight ColorColumn guibg=#333333 guifg=NONE  
+highlight Comment ctermfg=gray guifg=#888888 "gui needs a little lighter comment color (terminal is darker due to transparent background)
+highlight NonText ctermfg=gray guifg=gray
+highlight SpecialKey ctermfg=red guifg=red
 
 filetype plugin indent on  " activates indenting and plugins for specific files
 
 set listchars=tab:→…,trail:◥,eol:¬,extends:❯,precedes:❮	" when 'set list' will identify whitespace chraracters such as tab
-highlight NonText ctermfg=gray guifg=gray
-highlight SpecialKey ctermfg=red guifg=red
 set softtabstop=0	" see https://vi.stackexchange.com/questions/4244/what-is-softtabstop-used-for
 set tabstop=4		" width of a tab
 set shiftwidth=4    " width of the indentation
