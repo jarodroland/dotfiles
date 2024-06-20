@@ -10,6 +10,7 @@ colorscheme vimbrant
 " override some vimbrant color options
 highlight CursorLine  guibg=#111111 guifg=NONE "for MacVim (gui) set highlight to very dark grey and don't change foreground color
 highlight ColorColumn guibg=#111111 guifg=NONE  
+highlight Comment ctermfg=248 	"terminal needs a little lighter comment color
 highlight Comment guifg=#888888 "gui needs a little lighter comment color (terminal is darker due to transparent background)
 
 filetype plugin indent on  " activates indenting and plugins for specific files
