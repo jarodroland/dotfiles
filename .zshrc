@@ -176,6 +176,12 @@ if [ $(uname) = "Darwin" ]; then
 	[[ -d /Applications/workbench/bin_macosx64 ]] && export PATH=$PATH:/Applications/workbench/bin_macosx64
 
 elif [ $(uname) = "Linux" ]; then
+	# add cuda to path
+	[[ -d /usr/local/cuda-12.3/bin ]] && export PATH=/usr/local/cuda-12.3/bin/${PATH:+:${PATH}}
+
+	# add for pipx 
+	[[ -d $HOME/.local/bin ]] && export PATH="$PATH:/home/jarod/.local/bin"
+
 	# add workbench to path in linux
 	[[ -d /opt/workbench/bin_linux64 ]] && export PATH=$PATH:/opt/workbench/bin_linux64
 
@@ -216,3 +222,4 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
