@@ -13,3 +13,5 @@ export JAVA_HOME=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Ho
 # disable writing .DS_Store to network mounts
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
+# show full path in Finder title
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
