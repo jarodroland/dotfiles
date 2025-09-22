@@ -10,19 +10,18 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 # export JAVA_HOME so JRE works at the command line
 export JAVA_HOME=/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home
 
-# disable writing .DS_Store to network mounts or USB drives
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
-
-# show full path in Finder title
+# Finder: show full path in Finder title
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
-# show path bar in bottom of Finder window
+# Finder: show path bar in bottom of Finder window
 defaults write com.apple.finder ShowPathbar -bool true
 
-# Use list view in all Finder windows by default
+# Finder: Use list view in all Finder windows by default
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `glyv`
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# Finder: show all filename extensions
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 # Show the /Volumes folder
 sudo chflags nohidden /Volumes
