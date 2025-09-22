@@ -173,7 +173,8 @@ if [ $(uname) = "Darwin" ]; then
 	fi
 
 	# add workbench to path in OSX
-	[[ -d /Applications/workbench/bin_macosx64 ]] && export PATH=$PATH:/Applications/workbench/bin_macosx64
+	[[ -d /Applications/workbench/bin_macosx64 ]] && export PATH=$PATH:/Applications/workbench/bin_macosx64		# version 1.5
+	[[ -d /Applications/workbench/bin_macosxub ]] && export PATH=$PATH:/Applications/workbench/bin_macosxub		# version 2.0.1
 
 elif [ $(uname) = "Linux" ]; then
 	# add cuda to path
