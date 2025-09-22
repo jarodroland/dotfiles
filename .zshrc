@@ -172,7 +172,7 @@ fi
 # setup OSX and Linux specific paths
 if [ $(uname) = "Darwin" ]; then
 	# add Matlab to path in OSX
-	matlabPaths=(/Applications/MATLAB_R*.app/bin(N))			# in case there is more than one Matlab installation
+	matlabPaths=(/Applications/MATLAB_R*.app/bin(N))				# handle zero or >1 Matlab installations, use (N) (zsh NULL_GLOB option) to avoid error if the directory doesn't exist
 	if [[ $#matlabPaths > 0 ]]; then
 		export PATH=$PATH:$matlabPaths[-1]							# when sorted alphanumerically by default the last entry should be the most recent
 	fi
