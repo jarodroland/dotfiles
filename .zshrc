@@ -164,6 +164,9 @@ if [[ -z $FREESURFER_HOME ]]; then
 	fi
 fi
 
+# add for pipx 
+[[ -d $HOME/.local/bin ]] && export PATH="$PATH:$HOME/.local/bin"
+
 # setup OSX and Linux specific paths
 if [ $(uname) = "Darwin" ]; then
 	# add Matlab to path in OSX
@@ -179,9 +182,6 @@ if [ $(uname) = "Darwin" ]; then
 elif [ $(uname) = "Linux" ]; then
 	# add cuda to path
 	[[ -d /usr/local/cuda-12.3/bin ]] && export PATH=/usr/local/cuda-12.3/bin/${PATH:+:${PATH}}
-
-	# add for pipx 
-	[[ -d $HOME/.local/bin ]] && export PATH="$PATH:/home/jarod/.local/bin"
 
 	# add workbench to path in linux
 	[[ -d /opt/workbench/bin_linux64 ]] && export PATH=$PATH:/opt/workbench/bin_linux64
@@ -297,4 +297,3 @@ OnIBlue='\033[0;104m'    # Blue
 OnIPurple='\033[0;105m'  # Purple
 OnICyan='\033[0;106m'    # Cyan
 OnIWhite='\033[0;107m'   # White
-
