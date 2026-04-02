@@ -78,10 +78,6 @@ plugins=(
   history-substring-search 
 )
 
-if [[ $(hostname -s) == 'LappyTappy' ]]; then
-	plugins=($plugins zsh-apple-touchbar)
-fi
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -127,6 +123,9 @@ bindkey -v
 export KEYTIMEOUT=1     # set lag time to 1ms
 set -o vi
 
+# bind control-q to push-line-or-edit vs push-input (https://zsh.sourceforge.io/Doc/Release/Zsh-Line-Editor.html#index-push_002dline)
+bindkey '^Q' push-line-or-edit
+
 # activate the advanced move commands zmv and mmv
 autoload -U zmv
 alias mmv='noglob zmv -W'
@@ -137,8 +136,14 @@ alias zsy='noglob zmv -Ls'
 
 
 # FSL setup
-if [[ -z $FSL_DIR && -e /usr/local/fsl ]]; then
-    export FSLDIR=/usr/local/fsl
+if [[ -d ${HOME}/fsl ]]; then
+	export FSLDIR=${HOME}/fsl
+elif [[ -d /usr/local/fsl ]]; then
+	export FSLDIR=/usr/local/fsl
+fi
+
+if [[ -n $FSLDIR ]]; then
+    export FSL_DIR=$FSLDIR
     source $FSLDIR/etc/fslconf/fsl.sh
     export PATH=$PATH:$FSLDIR/bin
 fi
@@ -159,13 +164,11 @@ if [[ -z $FREESURFER_HOME ]]; then
 		export FREESURFER_HOME=/usr/local/freesurfer/7.4.0/
 	elif [[ -d /usr/local/freesurfer/7.3.2/ ]]; then				# linux Freesurfer 7.3.2 path
 		export FREESURFER_HOME=/usr/local/freesurfer/7.3.2/
-	elif [[ -f /usr/local/freesurfer/SetUpFreeSurfer.sh ]]; then	# linux path
+	elif [[ -f /usr/local/freesurfer/SetUpFreeSurfer.sh ]]; then	# linux generic path
 		export FREESURFER_HOME=/usr/local/freesurfer/
 	fi
 	
-	if [[ -n $FREESURFER_HOME ]]; then
-		source $FREESURFER_HOME/SetUpFreeSurfer.sh $> /dev/null
-	fi
+	[[ -n $FREESURFER_HOME ]] && source $FREESURFER_HOME/SetUpFreeSurfer.sh $> /dev/null
 fi
 
 # Antigravity
@@ -194,7 +197,7 @@ elif [ $(uname) = "Linux" ]; then
 	[[ -d /opt/workbench/bin_linux64 ]] && export PATH=$PATH:/opt/workbench/bin_linux64
 
 	# add ANTs bin to path
-	if [ -d /opt/ants-2.4.4/bin ]; then
+	if [[ -d /opt/ants-2.4.4/bin ]]; then
 		export ANTSPATH=/opt/ants-2.4.4/bin/
 		export PATH=$PATH:${ANTSPATH}
 	fi
