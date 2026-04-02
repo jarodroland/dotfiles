@@ -169,7 +169,7 @@ if [[ -z $FREESURFER_HOME ]]; then
 fi
 
 # Antigravity
-[[ -d $HOME/.antigravity/antigravity/bin ]] && export PATH=$HOME/.antigravity/antigravity/bin:$PATH ]]
+[[ -d $HOME/.antigravity/antigravity/bin ]] && export PATH=$HOME/.antigravity/antigravity/bin:$PATH
 
 # add for pipx 
 [[ -d $HOME/.local/bin ]] && export PATH="$PATH:$HOME/.local/bin"
