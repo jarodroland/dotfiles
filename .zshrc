@@ -145,7 +145,9 @@ fi
 
 # Freesurfer setup
 if [[ -z $FREESURFER_HOME ]]; then
-	if [[ -d /Applications/freesurfer/7.4.0/ ]]; then  				# osx FreeSurfer 7.4.0 path
+	if [[ -d /Applications/freesurfer/8.1.0/ ]]; then  				# osx FreeSurfer 8.1.0 path
+		export FREESURFER_HOME=/Applications/freesurfer/8.1.0/
+	elif [[ -d /Applications/freesurfer/7.4.0/ ]]; then  			# osx FreeSurfer 7.4.0 path
 		export FREESURFER_HOME=/Applications/freesurfer/7.4.0/
 	elif [[ -d /Applications/freesurfer/7.2.0/ ]]; then  			# osx FreeSurfer 7.2.0 path
 		export FREESURFER_HOME=/Applications/freesurfer/7.2.0/
@@ -166,6 +168,9 @@ if [[ -z $FREESURFER_HOME ]]; then
 	fi
 fi
 
+# Antigravity
+[[ -d $HOME/.antigravity/antigravity/bin ]] && export PATH=$HOME/.antigravity/antigravity/bin:$PATH ]]
+
 # setup OSX and Linux specific paths
 if [ $(uname) = "Darwin" ]; then
 	# add Matlab to path in OSX
@@ -176,6 +181,9 @@ if [ $(uname) = "Darwin" ]; then
 
 	# add workbench to path in OSX
 	[[ -d /Applications/workbench/bin_macosx64 ]] && export PATH=$PATH:/Applications/workbench/bin_macosx64
+	[[ -d /Applications/Workbench/wb_view.app/Contents/usr/bin ]] && export PATH=$PATH:/Applications/Workbench/wb_view.app/Contents/usr/bin
+
+
 
 elif [ $(uname) = "Linux" ]; then
 	# add cuda to path
@@ -204,6 +212,8 @@ elif [[ -d /opt/anaconda3 ]]; then
     export ANACONDA_DIRECTORY=/opt/anaconda3
 elif [[ -d ~/mambaforge ]]; then
     export ANACONDA_DIRECTORY=~/mambaforge
+elif [[ -d /opt/homebrew/Caskroom/miniforge ]]; then
+	export ANACONDA_DIRECTORY=/opt/homebrew/Caskroom/miniforge/base
 fi
 
 __conda_setup="$('$ANACONDA_DIRECTORY/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
