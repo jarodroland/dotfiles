@@ -171,26 +171,24 @@ fi
 # Antigravity
 [[ -d $HOME/.antigravity/antigravity/bin ]] && export PATH=$HOME/.antigravity/antigravity/bin:$PATH ]]
 
+# add for pipx 
+[[ -d $HOME/.local/bin ]] && export PATH="$PATH:$HOME/.local/bin"
+
 # setup OSX and Linux specific paths
 if [ $(uname) = "Darwin" ]; then
 	# add Matlab to path in OSX
-	matlabPaths=(/Applications/MATLAB_R*.app/bin(N))			# in case there is more than one Matlab installation
+	matlabPaths=(/Applications/MATLAB_R*.app/bin(N))				# handle zero or >1 Matlab installations, use (N) (zsh NULL_GLOB option) to avoid error if the directory doesn't exist
 	if [[ $#matlabPaths > 0 ]]; then
 		export PATH=$PATH:$matlabPaths[-1]							# when sorted alphanumerically by default the last entry should be the most recent
 	fi
 
 	# add workbench to path in OSX
-	[[ -d /Applications/workbench/bin_macosx64 ]] && export PATH=$PATH:/Applications/workbench/bin_macosx64
-	[[ -d /Applications/Workbench/wb_view.app/Contents/usr/bin ]] && export PATH=$PATH:/Applications/Workbench/wb_view.app/Contents/usr/bin
-
-
+	[[ -d /Applications/workbench/bin_macosx64 ]] && export PATH=$PATH:/Applications/workbench/bin_macosx64		# version 1.5
+	[[ -d /Applications/workbench/bin_macosxub ]] && export PATH=$PATH:/Applications/workbench/bin_macosxub		# version 2.0.1
 
 elif [ $(uname) = "Linux" ]; then
 	# add cuda to path
 	[[ -d /usr/local/cuda-12.3/bin ]] && export PATH=/usr/local/cuda-12.3/bin/${PATH:+:${PATH}}
-
-	# add for pipx 
-	[[ -d $HOME/.local/bin ]] && export PATH="$PATH:/home/jarod/.local/bin"
 
 	# add workbench to path in linux
 	[[ -d /opt/workbench/bin_linux64 ]] && export PATH=$PATH:/opt/workbench/bin_linux64
@@ -308,4 +306,3 @@ OnIBlue='\033[0;104m'    # Blue
 OnIPurple='\033[0;105m'  # Purple
 OnICyan='\033[0;106m'    # Cyan
 OnIWhite='\033[0;107m'   # White
-
