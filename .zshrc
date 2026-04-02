@@ -150,7 +150,9 @@ fi
 
 # Freesurfer setup
 if [[ -z $FREESURFER_HOME ]]; then
-	if [[ -d /Applications/freesurfer/7.4.0/ ]]; then  				# osx FreeSurfer 7.4.0 path
+	if [[ -d /Applications/freesurfer/8.1.0/ ]]; then  				# osx FreeSurfer 8.1.0 path
+		export FREESURFER_HOME=/Applications/freesurfer/8.1.0/
+	elif [[ -d /Applications/freesurfer/7.4.0/ ]]; then  			# osx FreeSurfer 7.4.0 path
 		export FREESURFER_HOME=/Applications/freesurfer/7.4.0/
 	elif [[ -d /Applications/freesurfer/7.2.0/ ]]; then  			# osx FreeSurfer 7.2.0 path
 		export FREESURFER_HOME=/Applications/freesurfer/7.2.0/
@@ -169,23 +171,27 @@ if [[ -z $FREESURFER_HOME ]]; then
 	[[ -n $FREESURFER_HOME ]] && source $FREESURFER_HOME/SetUpFreeSurfer.sh $> /dev/null
 fi
 
+# Antigravity
+[[ -d $HOME/.antigravity/antigravity/bin ]] && export PATH=$HOME/.antigravity/antigravity/bin:$PATH ]]
+
+# add for pipx 
+[[ -d $HOME/.local/bin ]] && export PATH="$PATH:$HOME/.local/bin"
+
 # setup OSX and Linux specific paths
 if [ $(uname) = "Darwin" ]; then
 	# add Matlab to path in OSX
-	matlabPaths=(/Applications/MATLAB_R*.app/bin(N))			# in case there is more than one Matlab installation
+	matlabPaths=(/Applications/MATLAB_R*.app/bin(N))				# handle zero or >1 Matlab installations, use (N) (zsh NULL_GLOB option) to avoid error if the directory doesn't exist
 	if [[ $#matlabPaths > 0 ]]; then
 		export PATH=$PATH:$matlabPaths[-1]							# when sorted alphanumerically by default the last entry should be the most recent
 	fi
 
 	# add workbench to path in OSX
-	[[ -d /Applications/workbench/bin_macosx64 ]] && export PATH=$PATH:/Applications/workbench/bin_macosx64
+	[[ -d /Applications/workbench/bin_macosx64 ]] && export PATH=$PATH:/Applications/workbench/bin_macosx64		# version 1.5
+	[[ -d /Applications/workbench/bin_macosxub ]] && export PATH=$PATH:/Applications/workbench/bin_macosxub		# version 2.0.1
 
 elif [ $(uname) = "Linux" ]; then
 	# add cuda to path
 	[[ -d /usr/local/cuda-12.3/bin ]] && export PATH=/usr/local/cuda-12.3/bin/${PATH:+:${PATH}}
-
-	# add for pipx 
-	[[ -d $HOME/.local/bin ]] && export PATH="$PATH:/home/jarod/.local/bin"
 
 	# add workbench to path in linux
 	[[ -d /opt/workbench/bin_linux64 ]] && export PATH=$PATH:/opt/workbench/bin_linux64
@@ -207,6 +213,8 @@ elif [[ -d /opt/anaconda3 ]]; then
     export ANACONDA_DIRECTORY=/opt/anaconda3
 elif [[ -d ~/mambaforge ]]; then
     export ANACONDA_DIRECTORY=~/mambaforge
+elif [[ -d /opt/homebrew/Caskroom/miniforge ]]; then
+	export ANACONDA_DIRECTORY=/opt/homebrew/Caskroom/miniforge/base
 fi
 
 __conda_setup="$('$ANACONDA_DIRECTORY/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -301,4 +309,3 @@ OnIBlue='\033[0;104m'    # Blue
 OnIPurple='\033[0;105m'  # Purple
 OnICyan='\033[0;106m'    # Cyan
 OnIWhite='\033[0;107m'   # White
-
