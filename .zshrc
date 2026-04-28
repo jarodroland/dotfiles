@@ -203,32 +203,35 @@ elif [ $(uname) = "Linux" ]; then
 	fi
 fi
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-if [[ -d ~/anaconda3 ]]; then
-    export ANACONDA_DIRECTORY=~/anaconda3
-elif [[ -d ~/opt/anaconda3 ]]; then
-    export ANACONDA_DIRECTORY=~/opt/anaconda3
-elif [[ -d /opt/anaconda3 ]]; then
-    export ANACONDA_DIRECTORY=/opt/anaconda3
-elif [[ -d ~/mambaforge ]]; then
-    export ANACONDA_DIRECTORY=~/mambaforge
-elif [[ -d /opt/homebrew/Caskroom/miniforge ]]; then
-	export ANACONDA_DIRECTORY=/opt/homebrew/Caskroom/miniforge/base
-fi
+# I put conda initialization in .zprofile, so only run again if it isn't already setup
+if [[ ! -v $CONDA_SHLVL ]]; then
+	# >>> conda initialize >>>
+	# !! Contents within this block are managed by 'conda init' !!
+	if [[ -d ~/anaconda3 ]]; then
+		export ANACONDA_DIRECTORY=~/anaconda3
+	elif [[ -d ~/opt/anaconda3 ]]; then
+		export ANACONDA_DIRECTORY=~/opt/anaconda3
+	elif [[ -d /opt/anaconda3 ]]; then
+		export ANACONDA_DIRECTORY=/opt/anaconda3
+	elif [[ -d ~/mambaforge ]]; then
+		export ANACONDA_DIRECTORY=~/mambaforge
+	elif [[ -d /opt/homebrew/Caskroom/miniforge ]]; then
+		export ANACONDA_DIRECTORY=/opt/homebrew/Caskroom/miniforge/base
+	fi
 
-__conda_setup="$('$ANACONDA_DIRECTORY/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "$ANACONDA_DIRECTORY/etc/profile.d/conda.sh" ]; then
-        . "$ANACONDA_DIRECTORY/etc/profile.d/conda.sh"
-    else
-        export PATH="$ANACONDA_DIRECTORY/bin:$PATH"
-    fi
+	__conda_setup="$('$ANACONDA_DIRECTORY/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+	if [ $? -eq 0 ]; then
+		eval "$__conda_setup"
+	else
+		if [ -f "$ANACONDA_DIRECTORY/etc/profile.d/conda.sh" ]; then
+			. "$ANACONDA_DIRECTORY/etc/profile.d/conda.sh"
+		else
+			export PATH="$ANACONDA_DIRECTORY/bin:$PATH"
+		fi
+	fi
+	unset __conda_setup
+	# <<< conda initialize <<<
 fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 # iTerm2 shell integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
