@@ -174,8 +174,8 @@ fi
 # Antigravity
 [[ -d $HOME/.antigravity/antigravity/bin ]] && export PATH=$HOME/.antigravity/antigravity/bin:$PATH
 
-# add for pipx 
-[[ -d $HOME/.local/bin ]] && export PATH="$PATH:$HOME/.local/bin"
+# add for pipx and Antigravity
+[[ -d $HOME/.local/bin ]] && export PATH="$HOME/.local/bin:$PATH"
 
 # setup OSX and Linux specific paths
 if [ $(uname) = "Darwin" ]; then
@@ -312,3 +312,4 @@ OnIBlue='\033[0;104m'    # Blue
 OnIPurple='\033[0;105m'  # Purple
 OnICyan='\033[0;106m'    # Cyan
 OnIWhite='\033[0;107m'   # White
+
