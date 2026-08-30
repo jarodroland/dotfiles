@@ -36,6 +36,15 @@ set showcmd         " show informations about selection while in visual mode
 set cursorline      " highlight current line
 set scrolloff=5     " always keep lines around the cursor
 
+if &term =~ '^screen' || &term =~ '^tmux'
+	" Force Vim to use extended mouse tracking for dragging support
+	if has("mouse_sgr")
+		set ttymouse=sgr
+	else
+		set ttymouse=xterm2
+	endif
+endif
+
 " use ctrl-space as to toggle insert mode / Escape
 :nnoremap <C-@> i
 :inoremap <C-@> <Esc>
