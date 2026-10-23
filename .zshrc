@@ -134,6 +134,26 @@ alias zcp='noglob zmv -C'
 alias zln='noglob zmv -L'
 alias zsy='noglob zmv -Ls'
 
+# help tmux keep the DISPLAY variable set when moving around computers
+# Automatically update DISPLAY and XAUTHORITY inside tmux panes
+if [ -n "$TMUX" ]; then
+    function tmux_refresh_env()
+	{
+        # query tmux server for the updated variables
+		eval $(tmux show-environment -s | grep -E "(DISPLAY|SSH_AUTH_SOCK|XAUTHORITY)")
+    }
+
+    # executue the funciton now so it runs anytime a new pane/window is created
+    tmux_refresh_env
+
+    # add to precmd_functions so it runs every time a prompt is drawn (captures changes after a new tmux attach)
+    if [ -n "$ZSH_VERSION" ]; then
+        precmd_functions+=(tmux_refresh_env)
+    elif [ -n "$BASH_VERSION" ]; then
+        PROMPT_COMMAND="tmux_refresh_env; $PROMPT_COMMAND"
+    fi
+fi
+
 
 # FSL setup
 if [[ -d ${HOME}/fsl ]]; then
